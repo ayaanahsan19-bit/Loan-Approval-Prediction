@@ -170,29 +170,7 @@ CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0
 - [ ] **API Integration**: Real-time credit bureau data
 - [ ] **Advanced Analytics**: Customer segmentation, risk scoring
 - [ ] **Multi-language Support**: International deployment
-- [ ] **Mobile App**: React Native companion application
-
-## �‍💻 About the Developer
-
-**Ayaan Ahsan** is a passionate Machine Learning engineer and Python developer with expertise in building end-to-end data science solutions. This project demonstrates his proficiency in:
-
-- **Machine Learning**: Implementing and comparing multiple ML algorithms
-- **Data Science**: Complete data preprocessing and analysis pipelines
-- **Web Development**: Creating interactive applications with Streamlit
-- **Visualization**: Building professional dashboards with Plotly
-- **Software Engineering**: Following best practices with modular code architecture
-
-Ayaan combines technical expertise with a keen eye for user experience, creating applications that are both powerful and intuitive.
-
-## � Contact & Support
-
-- **LinkedIn**: [www.linkedin.com/in/ayaan-ahsan-39bb422bb](https://www.linkedin.com/in/ayaan-ahsan-39bb422bb)
-- **GitHub**: [github.com/ayaanahsan19-bit](https://github.com/ayaanahsan19-bit)
-- **Email**: [ayaan.ahsan19@gmail.com](mailto:ayaan.ahsan19@gmail.com)
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- [ ] **Mobile App**: React Native companion application.
 
 ## 🙏 Acknowledgments
 
@@ -205,7 +183,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ If you find this project helpful, please give it a star on GitHub!**
 
-**🚀 This project demonstrates advanced ML engineering skills and is ready to transform loan approval processes with AI. Connect with Ayaan to discuss how this technology can revolutionize financial decision-making!**
+**🚀 This project demonstrates advanced ML engineering skills and is ready to transform loan approval processes with AI. Connect with me to discuss how this technology can revolutionize financial decision-making!**
 
 ---
 
