@@ -13,6 +13,10 @@ import joblib
 import os
 import sys
 
+def html(content: str):
+    """Safe HTML renderer compatible with all Streamlit versions"""
+    st.markdown(content, unsafe_allow_html=True)
+
 # Add src directory to path for imports
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
@@ -31,7 +35,7 @@ from src.visualizations import (
 # Load custom CSS
 def load_css():
     with open("assets/style.css") as f:
-        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+        html(f"<style>{f.read()}</style>")
 
 # Set page configuration
 st.set_page_config(
@@ -85,12 +89,12 @@ def load_dataset():
 
 # PAGE 1: Home / Overview
 if page == "🏠 Home / Overview":
-    st.markdown('''
+    html('''
     <div class="hero-section">
         <h1 class="hero-title">🏦 Loan Approval Prediction System</h1>
         <p class="hero-subtitle">Advanced Machine Learning for Intelligent Loan Decision Making</p>
     </div>
-    ''', unsafe_allow_html=True)
+    ''')
     
     # Load data
     if st.session_state.data is None:
@@ -104,40 +108,40 @@ if page == "🏠 Home / Overview":
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            st.markdown(f'''
+            html(f'''
             <div class="metric-card">
                 <div class="metric-value">{len(data):,}</div>
                 <div class="metric-label">Total Applications</div>
             </div>
-            ''', unsafe_allow_html=True)
+            ''')
         
         with col2:
-            st.markdown(f'''
+            html(f'''
             <div class="metric-card">
                 <div class="metric-value">{len(data.columns)}</div>
                 <div class="metric-label">Features</div>
             </div>
-            ''', unsafe_allow_html=True)
+            ''')
         
         # Calculate approval rate
         if 'loan_status' in data.columns:
             approval_rate = (data['loan_status'] == 'Approved').sum() / len(data) * 100
             with col3:
-                st.markdown(f'''
+                html(f'''
             <div class="metric-card">
                 <div class="metric-value">{approval_rate:.1f}%</div>
                 <div class="metric-label">Approval Rate</div>
             </div>
-            ''', unsafe_allow_html=True)
+            ''')
         
         with col4:
             missing_count = data.isnull().sum().sum()
-            st.markdown(f'''
+            html(f'''
             <div class="metric-card">
                 <div class="metric-value">{missing_count}</div>
                 <div class="metric-label">Missing Values</div>
             </div>
-            ''', unsafe_allow_html=True)
+            ''')
         
         # Class imbalance visualization
         if 'loan_status' in data.columns:
@@ -173,7 +177,7 @@ if page == "🏠 Home / Overview":
 
 # PAGE 2: Exploratory Data Analysis
 elif page == "🔍 Exploratory Data Analysis":
-    st.markdown('<h1 class="hero-title">🔍 Exploratory Data Analysis</h1>', unsafe_allow_html=True)
+    html('<h1 class="hero-title">🔍 Exploratory Data Analysis</h1>')
     
     if st.session_state.data is None:
         st.session_state.data = load_dataset()
@@ -256,7 +260,7 @@ elif page == "🔍 Exploratory Data Analysis":
 
 # PAGE 3: Data Preprocessing
 elif page == "⚙️ Data Preprocessing":
-    st.markdown('<h1 class="hero-title">⚙️ Data Preprocessing</h1>', unsafe_allow_html=True)
+    html('<h1 class="hero-title">⚙️ Data Preprocessing</h1>')
     
     if st.session_state.data is None:
         st.session_state.data = load_dataset()
@@ -356,7 +360,7 @@ elif page == "⚙️ Data Preprocessing":
 
 # PAGE 4: Model Training
 elif page == "🤖 Model Training":
-    st.markdown('<h1 class="hero-title">🤖 Model Training</h1>', unsafe_allow_html=True)
+    html('<h1 class="hero-title">🤖 Model Training</h1>')
     
     if st.session_state.preprocessed_data is None:
         st.error("Please complete data preprocessing first!")
@@ -483,7 +487,7 @@ elif page == "🤖 Model Training":
 
 # PAGE 5: Model Comparison
 elif page == "⚖️ Model Comparison":
-    st.markdown('<h1 class="hero-title">⚖️ Model Comparison</h1>', unsafe_allow_html=True)
+    html('<h1 class="hero-title">⚖️ Model Comparison</h1>')
     
     if st.session_state.model_results is None:
         st.error("Please train models first!")
@@ -555,36 +559,36 @@ elif page == "⚖️ Model Comparison":
                           results['decision_tree']['roc_auc']) / 5
             
             if lr_score > dt_score:
-                st.markdown("""
+                html("""
                 <div style="background: linear-gradient(135deg, #F5A623, #FFB84D); 
                            padding: 2rem; border-radius: 15px; text-align: center; 
                            color: #0D0D0D; margin: 2rem 0;">
                     <h2>🏆 Logistic Regression Wins!</h2>
                     <p>Best overall performance with balanced metrics</p>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
             elif dt_score > lr_score:
-                st.markdown("""
+                html("""
                 <div style="background: linear-gradient(135deg, #F5A623, #FFB84D); 
                            padding: 2rem; border-radius: 15px; text-align: center; 
                            color: #0D0D0D; margin: 2rem 0;">
                     <h2>🏆 Decision Tree Wins!</h2>
                     <p>Best overall performance with strong feature interpretability</p>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
             else:
-                st.markdown("""
+                html("""
                 <div style="background: linear-gradient(135deg, #F5A623, #FFB84D); 
                            padding: 2rem; border-radius: 15px; text-align: center; 
                            color: #0D0D0D; margin: 2rem 0;">
                     <h2>🤝 It's a Tie!</h2>
                     <p>Both models perform equally well</p>
                 </div>
-                """, unsafe_allow_html=True)
+                """)
 
 # PAGE 6: Live Predictor
 elif page == "🎯 Live Predictor":
-    st.markdown('<h1 class="hero-title">🎯 Live Loan Approval Predictor</h1>', unsafe_allow_html=True)
+    html('<h1 class="hero-title">🎯 Live Loan Approval Predictor</h1>')
     
     if st.session_state.model is None or not st.session_state.model.models:
         st.error("Please train models first!")
@@ -692,9 +696,9 @@ elif page == "🎯 Live Predictor":
 
 # Footer
 st.markdown("---")
-st.markdown("""
+html("""
 <div style="text-align: center; color: #B0B0B0; padding: 1rem;">
     <p>🏦 Loan Approval Prediction System | Built with Streamlit & Machine Learning</p>
     <p>© 2024 | Advanced Analytics for Financial Decision Making</p>
 </div>
-""", unsafe_allow_html=True)
+""")
