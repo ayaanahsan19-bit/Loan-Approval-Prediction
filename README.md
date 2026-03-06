@@ -230,7 +230,7 @@ Ayaan combines technical expertise with a keen eye for user experience, creating
 
 - **LinkedIn**: [www.linkedin.com/in/ayaan-ahsan-39bb422bb](https://www.linkedin.com/in/ayaan-ahsan-39bb422bb)
 - **GitHub**: [github.com/ayaanahsan19-bit](https://github.com/ayaanahsan19-bit)
-- **Email**: [Contact via LinkedIn]
+- **Email**: [ayaan.ahsan19@gmail.com](mailto:ayaan.ahsan19@gmail.com)
 
 ## 📄 License
 
