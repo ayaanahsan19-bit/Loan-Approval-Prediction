@@ -1,79 +1,78 @@
 # 🏦 Loan Approval Prediction System
 
-An advanced, interactive web application for intelligent loan approval prediction using Machine Learning, developed by **Ayaan Ahsan**. This project demonstrates comprehensive data science workflows from exploratory data analysis to model deployment, showcasing expertise in building end-to-end ML solutions.
+An interactive web application for intelligent loan approval prediction using Machine Learning, developed by **Ayaan Ahsan**. This project demonstrates a full data science workflow — from exploratory analysis to live predictions — built with Streamlit and scikit-learn.
 
 ## 🌟 Features
 
-### 📊 **Comprehensive Analytics Dashboard**
-- **6 Interactive Pages**: Home, EDA, Preprocessing, Model Training, Comparison, Live Predictor
-- **Real-time Data Visualization**: Interactive charts using Plotly with dark theme
-- **Advanced Filtering**: Dynamic data exploration with sidebar controls
-- **KPI Metrics**: Beautiful metric cards with gold accent design
+### 📊 **6-Page Interactive Dashboard**
+- **Home / Overview**: KPI metric cards, loan status distribution chart, dataset preview
+- **Exploratory Data Analysis**: Distribution plots, box plots, correlation heatmap
+- **Data Preprocessing**: Encoding, scaling and train/test split walkthrough
+- **Model Training**: Configurable LR & Decision Tree training with metrics and confusion matrices
+- **Model Comparison**: Side-by-side metrics, ROC curves, feature importance comparison
+- **Live Predictor**: Real-time prediction with confidence scores and probability chart
 
-### 🤖 **Machine Learning Capabilities**
-- **Dual Model Approach**: Logistic Regression & Decision Tree comparison
-- **Class Imbalance Handling**: SMOTE integration for balanced predictions
-- **Feature Engineering**: Automated preprocessing pipeline
-- **Model Persistence**: Save and load trained models
+### 🤖 **Machine Learning**
+- **Two models**: Logistic Regression & Decision Tree Classifier
+- **Full preprocessing pipeline**: Median/mode imputation → LabelEncoder → StandardScaler
+- **Metrics**: Accuracy, Precision, Recall, F1-Score, ROC-AUC
+- **In-session persistence**: Trained models and scalers stored in `st.session_state`
 
-### 🎨 **Professional UI/UX Design**
-- **Dark Theme**: Modern dark background with gold accents (#F5A623)
-- **Responsive Layout**: Mobile-friendly column arrangements
-- **Custom CSS**: Styled components with hover effects and animations
-- **Interactive Elements**: Progress bars, spinners, and feedback messages
-
-### 🎯 **Live Prediction System**
-- **Real-time Predictions**: Input applicant details for instant decisions
-- **Probability Gauges**: Visual confidence indicators
-- **Feature Importance**: Understand which factors influence decisions
-- **Smart Recommendations**: Actionable insights for rejected applications
+### 🎨 **UI / UX**
+- Dark theme (`#0D0D0D`) with gold accents (`#F5A623`)
+- Fully responsive Plotly charts (`plotly_dark` template)
+- Hero sections and metric cards via custom inline CSS
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: Streamlit 1.29.0
-- **Backend**: Python 3.10+
-- **Machine Learning**: Scikit-learn 1.3.2
-- **Data Processing**: Pandas 2.1.4, NumPy 1.24.3
-- **Visualization**: Plotly 5.17.0, Matplotlib 3.8.2, Seaborn 0.13.0
-- **Imbalance Handling**: Imbalanced-learn 0.12.2
-- **Model Persistence**: Joblib 1.3.2
+| Package | Version |
+|---|---|
+| Python | 3.12 |
+| Streamlit | 1.40.0 |
+| Pandas | 2.2.1 |
+| NumPy | 1.26.4 |
+| scikit-learn | 1.4.2 |
+| Plotly | 5.20.0 |
+| PyArrow | 17.0.0 |
 
 ## 📁 Project Structure
 
 ```
-loan_approval_app/
-├── app.py                  # Main Streamlit application
+loan-approval-prediction/
+├── app.py                      # Main Streamlit application (all 6 pages)
+├── loan_approval_dataset.csv   # Dataset
+├── requirements.txt            # Pinned dependencies
+├── .python-version             # Pins Python 3.12 for Streamlit Cloud
 ├── src/
-│   ├── preprocess.py       # Data cleaning & encoding
-│   ├── model.py            # Model training & evaluation
-│   └── visualizations.py   # Interactive chart functions
+│   ├── preprocess.py           # Preprocessing utilities
+│   ├── model.py                # Model training & evaluation classes
+│   └── visualizations.py      # Chart helper functions
 ├── assets/
-│   └── style.css           # Custom CSS styling
-├── data/
-│   └── loan_data.csv       # Dataset (user-provided)
-├── models/                 # Trained model storage
-├── requirements.txt        # Python dependencies
-└── README.md              # Project documentation
+│   └── style.css               # Additional CSS
+└── README.md
 ```
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Python 3.10 or higher
-- Git installed
+- Python 3.12
+- Git
 
 ### Installation
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/loan-approval-prediction.git
-cd loan-approval-prediction
+git clone https://github.com/ayaanahsan19-bit/Loan-Approval-Prediction.git
+cd Loan-Approval-Prediction
 ```
 
 2. **Create virtual environment**
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+# Windows
+.venv\Scripts\activate
+# macOS / Linux
+source .venv/bin/activate
 ```
 
 3. **Install dependencies**
@@ -81,121 +80,80 @@ source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. **Prepare your dataset**
-- Place your loan approval CSV as `loan_approval_dataset.csv` in the root directory
-- Expected columns: `loan_id`, `no_of_dependents`, `education`, `self_employed`, 
-  `income_annum`, `loan_amount`, `loan_term`, `cibil_score`, 
-  `residential_assets_value`, `commercial_assets_value`, 
-  `luxury_assets_value`, `bank_asset_value`, `loan_status`
-
-5. **Run the application**
+4. **Run the application**
 ```bash
 streamlit run app.py
 ```
 
-The app will open automatically at `http://localhost:8501`
+App opens automatically at `http://localhost:8501`
+
+### Dataset
+The dataset (`loan_approval_dataset.csv`) is included in the repository.  
+Expected columns:
+```
+loan_id, no_of_dependents, education, self_employed, income_annum,
+loan_amount, loan_term, cibil_score, residential_assets_value,
+commercial_assets_value, luxury_assets_value, bank_asset_value, loan_status
+```
 
 ## 📊 Application Pages
 
-### 🏠 **Home / Overview**
-- Hero section with animated title
-- Dataset statistics with KPI cards
-- Class imbalance visualization
-- Dataset preview and information
+### 🏠 Home / Overview
+- Total applications, feature count, approval rate, missing value count
+- Loan status distribution bar chart
+- Dataset preview and column type breakdown
 
-### 🔍 **Exploratory Data Analysis**
-- Interactive filters (education, self-employment)
-- Missing values heatmap
-- Feature distribution plots
-- Correlation analysis
-- Scatter plots for relationship insights
+### 🔍 Exploratory Data Analysis
+- **Distributions tab**: Histogram per numerical feature split by loan status; bar charts for categoricals
+- **Feature vs Loan Status tab**: Box plots + grouped bar charts per categorical
+- **Correlations tab**: Full correlation heatmap + ranked absolute-correlation bar chart
 
-### ⚙️ **Data Preprocessing**
-- Raw vs cleaned data comparison
-- Imputation strategy explanations
-- Categorical encoding visualization
-- Feature scaling demonstration
-- Download cleaned dataset option
+### ⚙️ Data Preprocessing
+- Raw data shape, missing value audit
+- Encoding reference table (education / self_employed / loan_status)
+- Before/after scaling histograms (StandardScaler)
+- 80/20 train-test split pie chart
+- Preprocessed data sample
 
-### 🤖 **Model Training**
-- Configurable training parameters
-- SMOTE toggle for imbalance handling
-- Live training progress
-- Comprehensive evaluation metrics
-- Confusion matrix and ROC curves
-- Model persistence
+### 🤖 Model Training
+- Configure test size (10–40%), random seed, and which models to train
+- Trains selected models and displays: Accuracy, Precision, Recall, F1, ROC-AUC
+- Confusion matrix heatmap and top-10 feature importance bar per model
+- Results stored in session state for use in Comparison and Live Predictor
 
-### ⚖️ **Model Comparison**
-- Side-by-side performance comparison
-- SMOTE impact analysis
-- Winner declaration with reasoning
-- Detailed metrics table
+### ⚖️ Model Comparison
+- Grouped bar chart of all 5 metrics
+- Metrics summary table
+- Overlaid ROC curves with AUC labels
+- Side-by-side top-10 feature importance
 
-### 🎯 **Live Predictor**
-- Interactive application form
-- Real-time prediction with probability
-- Feature importance visualization
-- Smart recommendations
+### 🎯 Live Predictor
+- 11-field input form (sliders + number inputs)
+- Applies the same encoding + scaling pipeline used during training
+- Green **APPROVED** / Red **REJECTED** banner with confidence percentage
+- Probability bar chart for both outcome classes
 
-## 🎯 Key Insights & Findings
-
-### Data Analysis
-- **Approval Rate**: Typically 60-70% in loan datasets
-- **Key Features**: CIBIL score, income, and loan amount are strongest predictors
-- **Class Imbalance**: Common in financial datasets, addressed with SMOTE
-
-### Model Performance
-- **Logistic Regression**: Better for interpretability and baseline performance
-- **Decision Tree**: Superior for capturing non-linear relationships
-- **SMOTE Impact**: Significantly improves minority class detection
-
-### Business Value
-- **Risk Reduction**: Data-driven decision making reduces default risk
-- **Efficiency**: Automated approval process saves time and resources
-- **Fairness**: Consistent evaluation criteria reduce bias
-
-## 🔬 Technical Highlights
-
-### Advanced Preprocessing Pipeline
-```python
-# Automated data cleaning with median/mode imputation
-# Label encoding for categorical variables
-# StandardScaler for feature normalization
-# SMOTE for class imbalance handling
-```
-
-### Model Evaluation Framework
-- **Metrics**: Accuracy, Precision, Recall, F1-Score, ROC-AUC
-- **Visualization**: Confusion matrices, ROC curves
-- **Comparison**: Side-by-side model performance analysis
-
-### Interactive Visualizations
-- **Plotly Integration**: Dark-themed, responsive charts
-- **Real-time Updates**: Dynamic filtering and analysis
-- **Professional Design**: Gold accent color scheme
+> **Note**: Model Comparison and Live Predictor require models to be trained first on the Model Training page.
 
 ## 🌐 Deployment
 
-### Local Development
-```bash
-streamlit run app.py
-```
+### Streamlit Cloud
+The repo includes `.python-version` (pinned to `3.12`) and all dependencies have pre-built Python 3.12 wheels — no source compilation occurs on deployment.
 
-### Cloud Deployment (Streamlit Cloud)
-1. Push code to GitHub
-2. Connect Streamlit Cloud to your repository
-3. Configure environment variables
-4. Deploy with one click
+1. Push to GitHub
+2. Connect repo at [share.streamlit.io](https://share.streamlit.io)
+3. Set main file to `app.py`
+4. Deploy
 
-### Docker Deployment
+### Docker
 ```dockerfile
-FROM python:3.10-slim
+FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 EXPOSE 8501
-CMD ["streamlit", "run", "app.py"]
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
 ```
 
 ## 🤝 Contributing
