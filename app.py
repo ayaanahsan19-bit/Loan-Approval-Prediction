@@ -30,9 +30,8 @@ from src.visualizations import (
 
 # Load custom CSS
 def load_css():
-    with open('assets/style.css', 'r') as f:
-        css = f.read()
-    st.markdown(f'<style>{css}</style>', unsafe_allow_html=True)
+    with open("assets/style.css") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 # Set page configuration
 st.set_page_config(
@@ -86,10 +85,12 @@ def load_dataset():
 
 # PAGE 1: Home / Overview
 if page == "🏠 Home / Overview":
-    st.markdown('<div class="hero-section">', unsafe_allow_allow_html=True)
-    st.markdown('<h1 class="hero-title">🏦 Loan Approval Prediction System</h1>', unsafe_allow_allow_html=True)
-    st.markdown('<p class="hero-subtitle">Advanced Machine Learning for Intelligent Loan Decision Making</p>', unsafe_allow_allow_html=True)
-    st.markdown('</div>', unsafe_allow_allow_html=True)
+    st.markdown('''
+    <div class="hero-section">
+        <h1 class="hero-title">🏦 Loan Approval Prediction System</h1>
+        <p class="hero-subtitle">Advanced Machine Learning for Intelligent Loan Decision Making</p>
+    </div>
+    ''', unsafe_allow_html=True)
     
     # Load data
     if st.session_state.data is None:
@@ -103,32 +104,40 @@ if page == "🏠 Home / Overview":
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            st.markdown('<div class="metric-card">', unsafe_allow_allow_html=True)
-            st.markdown(f'<div class="metric-value">{len(data):,}</div>', unsafe_allow_allow_html=True)
-            st.markdown('<div class="metric-label">Total Applications</div>', unsafe_allow_allow_html=True)
-            st.markdown('</div>', unsafe_allow_allow_html=True)
+            st.markdown(f'''
+            <div class="metric-card">
+                <div class="metric-value">{len(data):,}</div>
+                <div class="metric-label">Total Applications</div>
+            </div>
+            ''', unsafe_allow_html=True)
         
         with col2:
-            st.markdown('<div class="metric-card">', unsafe_allow_allow_html=True)
-            st.markdown(f'<div class="metric-value">{len(data.columns)}</div>', unsafe_allow_allow_html=True)
-            st.markdown('<div class="metric-label">Features</div>', unsafe_allow_allow_html=True)
-            st.markdown('</div>', unsafe_allow_allow_html=True)
+            st.markdown(f'''
+            <div class="metric-card">
+                <div class="metric-value">{len(data.columns)}</div>
+                <div class="metric-label">Features</div>
+            </div>
+            ''', unsafe_allow_html=True)
         
         # Calculate approval rate
         if 'loan_status' in data.columns:
             approval_rate = (data['loan_status'] == 'Approved').sum() / len(data) * 100
             with col3:
-                st.markdown('<div class="metric-card">', unsafe_allow_allow_html=True)
-                st.markdown(f'<div class="metric-value">{approval_rate:.1f}%</div>', unsafe_allow_allow_html=True)
-                st.markdown('<div class="metric-label">Approval Rate</div>', unsafe_allow_allow_html=True)
-                st.markdown('</div>', unsafe_allow_allow_html=True)
+                st.markdown(f'''
+            <div class="metric-card">
+                <div class="metric-value">{approval_rate:.1f}%</div>
+                <div class="metric-label">Approval Rate</div>
+            </div>
+            ''', unsafe_allow_html=True)
         
         with col4:
-            st.markdown('<div class="metric-card">', unsafe_allow_allow_html=True)
             missing_count = data.isnull().sum().sum()
-            st.markdown(f'<div class="metric-value">{missing_count}</div>', unsafe_allow_allow_html=True)
-            st.markdown('<div class="metric-label">Missing Values</div>', unsafe_allow_allow_html=True)
-            st.markdown('</div>', unsafe_allow_allow_html=True)
+            st.markdown(f'''
+            <div class="metric-card">
+                <div class="metric-value">{missing_count}</div>
+                <div class="metric-label">Missing Values</div>
+            </div>
+            ''', unsafe_allow_html=True)
         
         # Class imbalance visualization
         if 'loan_status' in data.columns:
@@ -164,7 +173,7 @@ if page == "🏠 Home / Overview":
 
 # PAGE 2: Exploratory Data Analysis
 elif page == "🔍 Exploratory Data Analysis":
-    st.markdown('<h1 class="hero-title">🔍 Exploratory Data Analysis</h1>', unsafe_allow_allow_html=True)
+    st.markdown('<h1 class="hero-title">🔍 Exploratory Data Analysis</h1>', unsafe_allow_html=True)
     
     if st.session_state.data is None:
         st.session_state.data = load_dataset()
@@ -247,7 +256,7 @@ elif page == "🔍 Exploratory Data Analysis":
 
 # PAGE 3: Data Preprocessing
 elif page == "⚙️ Data Preprocessing":
-    st.markdown('<h1 class="hero-title">⚙️ Data Preprocessing</h1>', unsafe_allow_allow_html=True)
+    st.markdown('<h1 class="hero-title">⚙️ Data Preprocessing</h1>', unsafe_allow_html=True)
     
     if st.session_state.data is None:
         st.session_state.data = load_dataset()
@@ -347,7 +356,7 @@ elif page == "⚙️ Data Preprocessing":
 
 # PAGE 4: Model Training
 elif page == "🤖 Model Training":
-    st.markdown('<h1 class="hero-title">🤖 Model Training</h1>', unsafe_allow_allow_html=True)
+    st.markdown('<h1 class="hero-title">🤖 Model Training</h1>', unsafe_allow_html=True)
     
     if st.session_state.preprocessed_data is None:
         st.error("Please complete data preprocessing first!")
@@ -474,7 +483,7 @@ elif page == "🤖 Model Training":
 
 # PAGE 5: Model Comparison
 elif page == "⚖️ Model Comparison":
-    st.markdown('<h1 class="hero-title">⚖️ Model Comparison</h1>', unsafe_allow_allow_html=True)
+    st.markdown('<h1 class="hero-title">⚖️ Model Comparison</h1>', unsafe_allow_html=True)
     
     if st.session_state.model_results is None:
         st.error("Please train models first!")
@@ -553,7 +562,7 @@ elif page == "⚖️ Model Comparison":
                     <h2>🏆 Logistic Regression Wins!</h2>
                     <p>Best overall performance with balanced metrics</p>
                 </div>
-                """, unsafe_allow_allow_html=True)
+                """, unsafe_allow_html=True)
             elif dt_score > lr_score:
                 st.markdown("""
                 <div style="background: linear-gradient(135deg, #F5A623, #FFB84D); 
@@ -562,7 +571,7 @@ elif page == "⚖️ Model Comparison":
                     <h2>🏆 Decision Tree Wins!</h2>
                     <p>Best overall performance with strong feature interpretability</p>
                 </div>
-                """, unsafe_allow_allow_html=True)
+                """, unsafe_allow_html=True)
             else:
                 st.markdown("""
                 <div style="background: linear-gradient(135deg, #F5A623, #FFB84D); 
@@ -571,11 +580,11 @@ elif page == "⚖️ Model Comparison":
                     <h2>🤝 It's a Tie!</h2>
                     <p>Both models perform equally well</p>
                 </div>
-                """, unsafe_allow_allow_html=True)
+                """, unsafe_allow_html=True)
 
 # PAGE 6: Live Predictor
 elif page == "🎯 Live Predictor":
-    st.markdown('<h1 class="hero-title">🎯 Live Loan Approval Predictor</h1>', unsafe_allow_allow_html=True)
+    st.markdown('<h1 class="hero-title">🎯 Live Loan Approval Predictor</h1>', unsafe_allow_html=True)
     
     if st.session_state.model is None or not st.session_state.model.models:
         st.error("Please train models first!")
@@ -688,4 +697,4 @@ st.markdown("""
     <p>🏦 Loan Approval Prediction System | Built with Streamlit & Machine Learning</p>
     <p>© 2024 | Advanced Analytics for Financial Decision Making</p>
 </div>
-""", unsafe_allow_allow_html=True)
+""", unsafe_allow_html=True)
