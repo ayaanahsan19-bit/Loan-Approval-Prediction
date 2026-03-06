@@ -1,6 +1,6 @@
 # 🏦 Loan Approval Prediction System
 
-An advanced, interactive web application for intelligent loan approval prediction using Machine Learning. This project demonstrates comprehensive data science workflows from exploratory data analysis to model deployment.
+An advanced, interactive web application for intelligent loan approval prediction using Machine Learning, developed by **Ayaan Ahsan**. This project demonstrates comprehensive data science workflows from exploratory data analysis to model deployment, showcasing expertise in building end-to-end ML solutions.
 
 ## 🌟 Features
 
@@ -214,11 +214,23 @@ CMD ["streamlit", "run", "app.py"]
 - [ ] **Multi-language Support**: International deployment
 - [ ] **Mobile App**: React Native companion application
 
-## 📞 Contact & Support
+## �‍💻 About the Developer
 
-- **LinkedIn**: [Your LinkedIn Profile]
-- **GitHub**: [Your GitHub Profile]
-- **Email**: [Your Email]
+**Ayaan Ahsan** is a passionate Machine Learning engineer and Python developer with expertise in building end-to-end data science solutions. This project demonstrates his proficiency in:
+
+- **Machine Learning**: Implementing and comparing multiple ML algorithms
+- **Data Science**: Complete data preprocessing and analysis pipelines
+- **Web Development**: Creating interactive applications with Streamlit
+- **Visualization**: Building professional dashboards with Plotly
+- **Software Engineering**: Following best practices with modular code architecture
+
+Ayaan combines technical expertise with a keen eye for user experience, creating applications that are both powerful and intuitive.
+
+## � Contact & Support
+
+- **LinkedIn**: [www.linkedin.com/in/ayaan-ahsan-39bb422bb](https://www.linkedin.com/in/ayaan-ahsan-39bb422bb)
+- **GitHub**: [github.com/ayaanahsan19-bit](https://github.com/ayaanahsan19-bit)
+- **Email**: [Contact via LinkedIn]
 
 ## 📄 License
 
@@ -235,8 +247,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **⭐ If you find this project helpful, please give it a star on GitHub!**
 
-**🚀 Ready to transform loan approval processes with AI? Let's connect and discuss how this technology can revolutionize financial decision-making!**
+**🚀 This project demonstrates advanced ML engineering skills and is ready to transform loan approval processes with AI. Connect with Ayaan to discuss how this technology can revolutionize financial decision-making!**
 
 ---
 
-#LinkedInPost #MachineLearning #DataScience #FinTech #Streamlit #Python #LoanApproval #ArtificialIntelligence
+#MachineLearning #DataScience #FinTech #Streamlit #Python #LoanApproval #ArtificialIntelligence #MLOps #WebDevelopment
