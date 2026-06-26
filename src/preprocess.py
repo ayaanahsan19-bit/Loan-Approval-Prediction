@@ -83,19 +83,19 @@ def encode_categorical_features(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[st
     # Encode education
     if 'education' in df_encoded.columns:
         le_education = LabelEncoder()
-        df_encoded['education'] = le_education.fit_transform(df_encoded['education'])
+        df_encoded['education'] = pd.Series(le_education.fit_transform(df_encoded['education']), index=df_encoded.index)
         encoders['education'] = le_education
     
     # Encode self_employed
     if 'self_employed' in df_encoded.columns:
         le_self_employed = LabelEncoder()
-        df_encoded['self_employed'] = le_self_employed.fit_transform(df_encoded['self_employed'])
+        df_encoded['self_employed'] = pd.Series(le_self_employed.fit_transform(df_encoded['self_employed']), index=df_encoded.index)
         encoders['self_employed'] = le_self_employed
     
     # Encode target variable (loan_status)
     if 'loan_status' in df_encoded.columns:
         le_loan_status = LabelEncoder()
-        df_encoded['loan_status'] = le_loan_status.fit_transform(df_encoded['loan_status'])
+        df_encoded['loan_status'] = pd.Series(le_loan_status.fit_transform(df_encoded['loan_status']), index=df_encoded.index)
         encoders['loan_status'] = le_loan_status
     
     return df_encoded, encoders

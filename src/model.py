@@ -77,8 +77,8 @@ class LoanApprovalModel:
             Resampled features and target
         """
         smote = SMOTE(random_state=42)
-        X_resampled, y_resampled = smote.fit_resample(X, y)
-        return X_resampled, y_resampled
+        X_resampled, y_resampled = smote.fit_resample(X, y)[:2]
+        return pd.DataFrame(X_resampled, columns=X.columns), pd.Series(y_resampled)
     
     def evaluate_model(self, model, X_test: pd.DataFrame, y_test: pd.Series, 
                       model_name: str) -> Dict[str, Any]:

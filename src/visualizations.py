@@ -8,12 +8,12 @@ import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
 import plotly.subplots as sp
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 
-def create_kpi_card(title: str, value: str, subtitle: str = None) -> go.Figure:
+def create_kpi_card(title: str, value: str, subtitle: Optional[str] = None) -> go.Figure:
     """
     Create a KPI card visualization.
     
@@ -123,7 +123,7 @@ def create_missing_values_heatmap(df: pd.DataFrame) -> go.Figure:
     return fig
 
 
-def create_distribution_plot(df: pd.DataFrame, column: str, color_by: str = None) -> go.Figure:
+def create_distribution_plot(df: pd.DataFrame, column: str, color_by: Optional[str] = None) -> go.Figure:
     """
     Create a distribution plot for numerical columns.
     
@@ -199,7 +199,7 @@ def create_correlation_heatmap(df: pd.DataFrame) -> go.Figure:
     return fig
 
 
-def create_scatter_plot(df: pd.DataFrame, x: str, y: str, color_by: str = None) -> go.Figure:
+def create_scatter_plot(df: pd.DataFrame, x: str, y: str, color_by: Optional[str] = None) -> go.Figure:
     """
     Create a scatter plot.
     
